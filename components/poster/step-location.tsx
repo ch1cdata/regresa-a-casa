@@ -100,7 +100,7 @@ export function StepLocation({ data, update, errors }: StepProps) {
           <label className="flex min-h-12 cursor-pointer items-center gap-3 rounded-lg border border-border bg-card px-3.5 py-3 sm:mt-7">
             <input
               type="checkbox"
-              className="size-5 accent-[#52B788]"
+              className="size-5 accent-primary"
               checked={data.includeYear}
               onChange={(e) => update({ includeYear: e.target.checked })}
             />

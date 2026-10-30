@@ -2,7 +2,7 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (@media (prefers-color-scheme: dark));
 
 @theme inline {
   --font-sans: var(--font-inter), system-ui, sans-serif;
@@ -25,6 +25,11 @@
   --color-card: var(--card);
   --color-foreground: var(--foreground);
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-brand-ink: var(--brand-ink);
+  --color-primary-hover: var(--primary-hover);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -33,7 +38,7 @@
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
   --background: #f8f9fa;
   --foreground: #212529;
   --card: #ffffff;
@@ -42,6 +47,7 @@
   --popover-foreground: #212529;
   --primary: #52b788;
   --primary-foreground: #0e2a1c;
+  --primary-hover: #45a578;
   --secondary: #eef1f3;
   --secondary-foreground: #212529;
   --muted: #eef1f3;
@@ -52,23 +58,38 @@
   --border: #dee2e6;
   --input: #ced4da;
   --ring: #52b788;
+  --surface: #e9ecef;
+  --brand-ink: #1e6b47;
+  --success: #2d8a5f;
+  --warning: #b8621b;
   --radius: 0.75rem;
 }
 
-/* Strict light theme: ignore the OS dark-mode preference and browser auto-darkening. */
-html,
-:root {
-  color-scheme: only light;
-  background-color: #f8f9fa;
-  color: #212529;
-}
-
 @media (prefers-color-scheme: dark) {
-  html,
   :root {
-    color-scheme: only light;
-    background-color: #f8f9fa;
-    color: #212529;
+    --background: #121614;
+    --foreground: #e8ecea;
+    --card: #1b211e;
+    --card-foreground: #e8ecea;
+    --popover: #1b211e;
+    --popover-foreground: #e8ecea;
+    --primary: #5cc493;
+    --primary-foreground: #0b2217;
+    --primary-hover: #6fd1a3;
+    --secondary: #252c28;
+    --secondary-foreground: #e8ecea;
+    --muted: #252c28;
+    --muted-foreground: #a4aea9;
+    --accent: #f4a261;
+    --accent-foreground: #1b1410;
+    --destructive: #ff6b6b;
+    --border: #2f3833;
+    --input: #3a443e;
+    --ring: #5cc493;
+    --surface: #0d100f;
+    --brand-ink: #8ddcb4;
+    --success: #6fcf9c;
+    --warning: #f4a261;
   }
 }
 
@@ -76,14 +97,19 @@ html,
   * {
     @apply border-border outline-ring/50;
   }
+  html,
+  body {
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
   body {
     @apply bg-background text-foreground font-sans;
   }
   input,
   select,
   textarea {
-    color-scheme: only light;
-    background-color: #ffffff;
-    color: #212529;
+    background-color: var(--card);
+    color: var(--foreground);
   }
 }

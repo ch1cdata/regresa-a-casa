@@ -41,7 +41,7 @@ export function SummaryPanel({ data }: { data: PosterData }) {
         {rows.map((r) => (
           <li key={r.label} className="flex items-start gap-3 px-4 py-3">
             {r.value ? (
-              <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-[#2D8A5F]" aria-hidden="true" />
+              <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" aria-hidden="true" />
             ) : (
               <Circle className="mt-0.5 size-4 shrink-0 text-input" aria-hidden="true" />
             )}
@@ -56,7 +56,7 @@ export function SummaryPanel({ data }: { data: PosterData }) {
       </ul>
 
       <p className="flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
-        <ShieldCheck className="mt-0.5 size-4 shrink-0 text-[#2D8A5F]" aria-hidden="true" />
+        <ShieldCheck className="mt-0.5 size-4 shrink-0 text-success" aria-hidden="true" />
         Todo se procesa en tu teléfono o computadora. No guardamos tus datos ni tus fotos.
       </p>
     </div>

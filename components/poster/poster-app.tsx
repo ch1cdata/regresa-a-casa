@@ -165,7 +165,7 @@ export function PosterApp() {
               <span className="text-xs text-muted-foreground">Carteles gratis para mascotas perdidas</span>
             </div>
           </div>
-          <span className="hidden rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-[#1E6B47] sm:inline">
+          <span className="hidden rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-brand-ink sm:inline">
             Gratis · Sin registro
           </span>
         </div>
@@ -207,7 +207,7 @@ export function PosterApp() {
                     type="button"
                     onClick={() => goTo(step - 1)}
                     disabled={working}
-                    className="inline-flex min-h-13 flex-1 items-center justify-center gap-2 rounded-xl border-2 border-primary bg-card px-5 text-base font-bold text-[#1E6B47] transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/40 disabled:opacity-50 sm:flex-none"
+                    className="inline-flex min-h-13 flex-1 items-center justify-center gap-2 rounded-xl border-2 border-primary bg-card px-5 text-base font-bold text-brand-ink transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/40 disabled:opacity-50 sm:flex-none"
                   >
                     <ArrowLeft className="size-5" aria-hidden="true" />
                     Atrás
@@ -216,7 +216,7 @@ export function PosterApp() {
                 <button
                   type="submit"
                   disabled={working}
-                  className="inline-flex min-h-13 flex-[2] items-center justify-center gap-2 rounded-xl bg-primary px-6 text-base font-bold text-primary-foreground shadow-sm transition hover:bg-[#45A578] focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/40 disabled:opacity-70 sm:ml-auto sm:flex-none"
+                  className="inline-flex min-h-13 flex-[2] items-center justify-center gap-2 rounded-xl bg-primary px-6 text-base font-bold text-primary-foreground shadow-sm transition hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/40 disabled:opacity-70 sm:ml-auto sm:flex-none"
                 >
                   {step < 5 ? (
                     <>
@@ -274,7 +274,7 @@ function StatusMessage({ status }: { status: Status }) {
   if (status.kind === "done")
     return (
       <div role="status" className="flex items-start gap-3 rounded-xl border border-primary/40 bg-primary/10 p-4 text-sm leading-relaxed">
-        <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#2D8A5F]" aria-hidden="true" />
+        <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-success" aria-hidden="true" />
         <p>
           <strong className="font-semibold">¡Listo! Se descargaron {status.count} {status.count === 1 ? "archivo" : "archivos"}.</strong>{" "}
           Imprime los PDF y compártelos en grupos vecinales. Si tu navegador pregunta, permite las descargas múltiples. Mucha suerte, ojalá regrese pronto a casa.

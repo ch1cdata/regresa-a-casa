@@ -157,7 +157,7 @@ export function PhotoCropper({ title, required, hint, photo, onChange, aspect, e
               step={0.01}
               value={photo.zoom}
               onChange={(e) => onChange({ ...photo, zoom: Number(e.target.value) })}
-              className="h-2 w-full accent-[#52B788]"
+              className="h-2 w-full accent-primary"
               aria-label="Zoom"
             />
             <span className="w-10 text-right tabular-nums text-muted-foreground">{photo.zoom.toFixed(1)}x</span>

@@ -52,7 +52,7 @@ export function PosterPreview({ data, mono }: { data: PosterData; mono?: boolean
           </button>
         ))}
       </div>
-      <div className="flex justify-center rounded-xl bg-[#E9ECEF] p-3 sm:p-5">
+      <div className="flex justify-center rounded-xl bg-surface p-3 sm:p-5">
         <canvas
           ref={canvasRef}
           width={PREVIEW_WIDTH}

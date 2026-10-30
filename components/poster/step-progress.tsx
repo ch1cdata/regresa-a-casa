@@ -14,7 +14,7 @@ export function StepProgress({ current }: { current: number }) {
         </span>
       </div>
       <div
-        className="relative h-2.5 overflow-hidden rounded-full bg-[#E9ECEF]"
+        className="relative h-2.5 overflow-hidden rounded-full bg-surface"
         role="progressbar"
         aria-valuemin={1}
         aria-valuemax={STEP_LABELS.length}
@@ -35,7 +35,7 @@ export function StepProgress({ current }: { current: number }) {
                   "flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold",
                   done && "bg-accent text-accent-foreground",
                   active && "bg-foreground text-background",
-                  !done && !active && "bg-[#E9ECEF] text-muted-foreground",
+                  !done && !active && "bg-surface text-muted-foreground",
                 )}
               >
                 {done ? <Check className="size-3.5" strokeWidth={3} aria-hidden="true" /> : n}

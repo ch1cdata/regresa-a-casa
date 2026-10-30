@@ -21,7 +21,7 @@ export function StepPhotos({ data, update, errors }: StepProps) {
       />
 
       <div className="flex gap-3 rounded-xl border border-accent/50 bg-accent/10 p-4 text-sm leading-relaxed">
-        <Lightbulb className="mt-0.5 size-5 shrink-0 text-[#B8621B]" aria-hidden="true" />
+        <Lightbulb className="mt-0.5 size-5 shrink-0 text-warning" aria-hidden="true" />
         <p className="text-pretty">
           <strong className="font-semibold">Consejo:</strong> usa una foto con buena luz, de cuerpo completo, de pie o
           sentado mirando a la cámara. En la foto secundaria acércate a lo que la hace única: manchas, ojos o marcas.
