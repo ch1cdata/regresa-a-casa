@@ -247,8 +247,8 @@ function drawNameStrip(ctx: Ctx, d: PosterData, x: number, y: number, w: number,
 
   const nameM = measureAt(ctx, nameText, fonts.display)
   const prefixM = measureAt(ctx, prefix, fonts.body, "800")
-  let nameSize = Math.min((100 * h * 0.62) / nameM.h, 120 * s)
-  let prefixSize = Math.min(nameSize * 0.38, h * 0.3)
+  let nameSize = Math.min((100 * h * 0.7) / nameM.h, 160 * s)
+  let prefixSize = Math.min(nameSize * 0.5, h * 0.42)
   const totalW = () => (nameM.w * nameSize) / 100 + (prefixM.w * prefixSize) / 100 + gap
   if (totalW() > availW) {
     const k = (availW - gap) / (totalW() - gap)
@@ -331,10 +331,10 @@ export function renderPoster(canvas: HTMLCanvasElement, d: PosterData, W: number
   const footer = footerText(d)
 
   const headerH = 136 * s
-  const titleH = 128 * s
-  const nameH = 66 * s
-  const contactH = 200 * s
-  const footerH = footer ? 84 * s : 0
+  const titleH = 118 * s
+  const nameH = 96 * s
+  const contactH = footer ? 140 * s : 200 * s
+  const footerH = footer ? 190 * s : 0
 
   // Header band
   ctx.fillStyle = p.primary
@@ -383,7 +383,7 @@ export function renderPoster(canvas: HTMLCanvasElement, d: PosterData, W: number
     const fy = bottomStart + contactH
     ctx.fillStyle = p.secondary
     ctx.fillRect(0, fy, W, footerH)
-    drawFitted(ctx, footer, pad, fy + footerH * 0.2, innerW, footerH * 0.6, fonts.display, p.onSecondary, { maxLines: 1 })
+    drawFitted(ctx, footer, pad, fy + footerH * 0.1, innerW, footerH * 0.76, fonts.display, p.onSecondary, { maxLines: 2, gapRatio: 0.08 })
   }
 
   // Side frame

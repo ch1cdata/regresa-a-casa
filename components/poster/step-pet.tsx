@@ -1,7 +1,7 @@
 "use client"
 
 import { ChoiceChip, type Errors, Field, StepHeading, controlClass } from "./form-fields"
-import { PET_TYPES, type PosterData } from "@/lib/poster/types"
+import { PET_TYPES, type PosterData, autoPosterTitle, posterTitle } from "@/lib/poster/types"
 
 interface StepProps {
   data: PosterData
@@ -137,6 +137,22 @@ export function StepPet({ data, update, errors }: StepProps) {
           )}
         </Field>
       </div>
+
+      <Field
+        label="Título del cartel"
+        hint={`Se ajusta solo al género (Gato/Gata, Blanco/Blanca). Escribe aquí si quieres cambiarlo. Actual: ${posterTitle(data) || "—"}`}
+      >
+        {(p) => (
+          <input
+            {...p}
+            className={controlClass()}
+            value={data.titleCustom}
+            onChange={(e) => update({ titleCustom: e.target.value })}
+            placeholder={autoPosterTitle(data) || "Ej. GATA BLANCA"}
+            maxLength={40}
+          />
+        )}
+      </Field>
 
       <Field
         label="Característica particular"

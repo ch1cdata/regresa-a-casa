@@ -22,6 +22,7 @@ const INITIAL: PosterData = {
   color: "",
   breed: "",
   gender: "",
+  titleCustom: "",
   age: "",
   feature: "",
   colonia: "",

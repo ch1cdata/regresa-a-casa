@@ -55,11 +55,35 @@
   --radius: 0.75rem;
 }
 
+/* Strict light theme: ignore the OS dark-mode preference and browser auto-darkening. */
+html,
+:root {
+  color-scheme: only light;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+@media (prefers-color-scheme: dark) {
+  html,
+  :root {
+    color-scheme: only light;
+    background-color: #f8f9fa;
+    color: #212529;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground font-sans;
+  }
+  input,
+  select,
+  textarea {
+    color-scheme: only light;
+    background-color: #ffffff;
+    color: #212529;
   }
 }

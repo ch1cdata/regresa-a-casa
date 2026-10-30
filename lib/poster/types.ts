@@ -23,6 +23,7 @@ export interface PosterData {
   breed: string
   gender: "" | "Macho" | "Hembra"
   age: string
+  titleCustom: string
   feature: string
   colonia: string
   municipio: string
@@ -149,10 +150,61 @@ export function petTypeLabel(d: Pick<PosterData, "type" | "otherType">) {
   return d.type
 }
 
-export function posterTitle(d: PosterData) {
-  const parts = [petTypeLabel(d)]
+const TYPE_BY_GENDER: Record<Exclude<PetType, "Otro">, { Macho: string; Hembra: string }> = {
+  Gato: { Macho: "Gato", Hembra: "Gata" },
+  Perro: { Macho: "Perro", Hembra: "Perra" },
+  Perico: { Macho: "Perico", Hembra: "Perica" },
+  Conejo: { Macho: "Conejo", Hembra: "Coneja" },
+}
+
+const GENDERED_COLOR =
+  /^(blanc|negr|roj|amarill|pard|atigrad|manchad|oscur|clar|dorad|platead|rayad|pintad|moread|rosad|tostad|castañ|cobriz|ruci|bay|blanquinegr|leonad|jaspead|moteado?|tigrad)(o|a|os|as)$/i
+
+function inferGender(color: string): "Macho" | "Hembra" | "" {
+  let fem = 0
+  let masc = 0
+  for (const word of color.split(/[\s,.\-/]+/)) {
+    const m = word.match(GENDERED_COLOR)
+    if (!m) continue
+    if (m[2].toLowerCase().startsWith("a")) fem++
+    else masc++
+  }
+  if (fem > masc) return "Hembra"
+  if (masc > fem) return "Macho"
+  return ""
+}
+
+export function effectiveGender(d: Pick<PosterData, "gender" | "color">): "Macho" | "Hembra" | "" {
+  return d.gender || inferGender(d.color)
+}
+
+function matchCase(source: string, target: string) {
+  if (source === source.toUpperCase()) return target.toUpperCase()
+  if (source[0] === source[0].toUpperCase()) return target[0].toUpperCase() + target.slice(1)
+  return target
+}
+
+function agreeColor(color: string, gender: "Macho" | "Hembra") {
+  return color.replace(/[\p{L}]+/gu, (word) => {
+    const m = word.match(GENDERED_COLOR)
+    if (!m) return word
+    const plural = m[2].toLowerCase().endsWith("s")
+    const ending = (gender === "Hembra" ? "a" : "o") + (plural ? "s" : "")
+    return matchCase(word, (m[1] + ending).toLowerCase())
+  })
+}
+
+export function autoPosterTitle(d: PosterData) {
+  const gender = effectiveGender(d)
+  let type = petTypeLabel(d)
+  let color = d.color.trim()
+  if (gender) {
+    if (d.type && d.type !== "Otro") type = TYPE_BY_GENDER[d.type][gender]
+    color = agreeColor(color, gender)
+  }
+  const parts = [type]
   if (d.type === "Perro" && d.breed.trim()) parts.push(d.breed.trim())
-  parts.push(d.color.trim())
+  parts.push(color)
   return parts
     .filter(Boolean)
     .join(" ")
@@ -160,6 +212,11 @@ export function posterTitle(d: PosterData) {
     .replace(/\s+/g, " ")
     .trim()
     .toUpperCase()
+}
+
+export function posterTitle(d: PosterData) {
+  const custom = d.titleCustom.trim()
+  return custom ? custom.replace(/\s+/g, " ").toUpperCase() : autoPosterTitle(d)
 }
 
 export function headerText(d: PosterData) {
