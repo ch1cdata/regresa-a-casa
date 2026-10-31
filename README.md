@@ -16,7 +16,7 @@ Perder una mascota es una situación muy estresante y actuar con rapidez es esen
 - **Descargas múltiples simultáneas:** PDF tamaño carta, PDF tamaño tabloide y PNG para Facebook e Historias de Instagram / TikTok.
 - **Privacidad:** todo se procesa en el navegador. No se envían ni almacenan datos personales ni fotos.
 
-## Prompt
+## Prompts
 
 PROMPTS - GENERADOR DE CARTEL DE MASCOTA PERDIDA
 
@@ -25,6 +25,14 @@ Eres un desarrollador web senior frontend y un diseñador UX/UI experto con un e
 
 TAREA:
 Crea una página web ligera, intuitiva y 100% responsiva (enfoque mobile-first) que tenga como objetivo generar un cartel de búsqueda de gatos y perros perdidos para personas sin experiencia en diseño.
+
+CONTEXTO
+Necesito una web ligera, intuitiva, pensada para personas sin experiencia en diseño, debe ser adaptable para vista en móvil.
+El usuario debe llenar un formulario por pasos para generar el cartel de búsqueda de mascota perdida.
+El formulario debe tener una barra o línea de progreso, con botones de Siguiente y Atrás hasta el último que será Generar.
+El formulario debe indicar claramente qué campos son obligatorios y marcar visualmente los errores cuando falte un dato al dar en Siguiente.
+La sección para subir la foto debe mostrar consejos claros de qué tipo de foto elegir y qué evitar.
+
 
 PRINCIPIOS DE DISEÑO Y ARMONÍA VISUAL (OBLIGATORIO):
 - **Aprovechamiento óptimo del espacio:** Cada sección debe fluir de manera equilibrada, sin dejar huecos muertos ni saturar el área de impresión. El diseño debe respirar, utilizando retículas limpias y márgenes profesionales (padding/margins simétricos).
@@ -127,6 +135,10 @@ RESTRICCIONES TÉCNICAS:
 - HTML5 Canvas para componer el cartel directamente en el navegador
 - CSS3 / Tailwind CSS
 - jsPDF (cargado bajo demanda solo al exportar PDF)
+
+  
+## URL Pública
+https://regresa-a-casa-6umseaf5o-adrianacastilloflores-1577.vercel.app/
 
 ## ¿Cómo usarlo?
 
